@@ -21,7 +21,7 @@ public class Casopis implements Observable {
 	@Override
 	public void remove(Observer o) {
 		int index = observers.indexOf(o);
-
+		System.out.println("======================================");
 		System.out.println("Pretplatnik " + o.getName() + " unsubscribed from " + casopis);
 		observers.remove(index);
 	}
