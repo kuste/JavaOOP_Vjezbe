@@ -39,12 +39,8 @@ public class App {
 
 	public static void activateAll(Promatrac p, WeatherStation ws, String name) {
 
-		if (p.getTitle().equals(name)) {
-			p.subscribe(ws);
-
-		} else {
-			JOptionPane.showMessageDialog(ws, "Takav promatrac ne postoji", "Message", JOptionPane.ERROR_MESSAGE);
-		}
+		p.getTitle().equals(name);
+		p.subscribe(ws);
 
 	}
 
