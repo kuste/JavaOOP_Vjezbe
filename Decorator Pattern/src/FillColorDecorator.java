@@ -7,6 +7,10 @@ public class FillColorDecorator extends ShapeDecorator {
 		this.fillColor = cl;
 	}
 
+	public FillColorDecorator() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public void setBasicShape2Decorate(BasicShape bs) {
 		this.decoratedShape = bs;
 	}
