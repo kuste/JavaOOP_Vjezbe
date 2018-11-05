@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
 public class WeatherStation extends JFrame implements Observable {
-	private JTextField textField;
+	private JTextField textFieldPromatrac;
 	private JTextField textTemp;
 	private JTextField textVlaznost;
 	private JTextField textTlak;
@@ -64,10 +64,10 @@ public class WeatherStation extends JFrame implements Observable {
 		lblNoviPromatrac.setBounds(12, 40, 114, 16);
 		panelGL.add(lblNoviPromatrac);
 
-		textField = new JTextField();
-		textField.setBounds(12, 69, 198, 22);
-		panelGL.add(textField);
-		textField.setColumns(10);
+		textFieldPromatrac = new JTextField();
+		textFieldPromatrac.setBounds(12, 69, 198, 22);
+		panelGL.add(textFieldPromatrac);
+		textFieldPromatrac.setColumns(10);
 
 		btnDodajNaListu = new JButton("Dodaj na listu");
 		btnDodajNaListu.setBounds(12, 135, 155, 25);
@@ -230,7 +230,7 @@ public class WeatherStation extends JFrame implements Observable {
 		} else {
 			observers.add(o);
 			comboBoxPromatraci.addItem(observers.get(observers.size() - 1).toString());
-			String name = textField.getText();
+			String name = textFieldPromatrac.getText();
 
 			if (observers.get(observers.size() - 1).title().equals(name)) {
 				textArea.append("Observer " + name + " added\n");
@@ -261,8 +261,13 @@ public class WeatherStation extends JFrame implements Observable {
 		return btnDodajNaListu;
 	}
 
-	public JTextField getTextField() {
-		return textField;
+	public JTextField getTextFieldPromatrac() {
+		return textFieldPromatrac;
 	}
+
+
+	
+
+
 
 }

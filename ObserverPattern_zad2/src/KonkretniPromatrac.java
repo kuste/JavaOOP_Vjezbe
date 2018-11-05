@@ -21,12 +21,10 @@ public class KonkretniPromatrac extends Promatrac {
 	@Override
 	public void subscribe(Observable o) {
 		o.add(this);
-
 	}
 
 	@Override
 	public String title() {
-
 		return super.getTitle();
 	}
 

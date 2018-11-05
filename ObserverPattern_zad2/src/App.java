@@ -1,7 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 public class App {
@@ -14,21 +13,21 @@ public class App {
 			public void run() {
 
 				WeatherStation ws = new WeatherStation();
-				Promatrac p1 = new KonkretniPromatrac("Promatrac1");
-				Promatrac p2 = new KonkretniPromatrac("Promatrac2");
-				Promatrac p3 = new KonkretniPromatracAVG("Promatrac3");
-				Promatrac p4 = new KonkretniPromatracAVG("4");
+				Promatrac p = new KonkretniPromatrac("1");
+				Promatrac p1 = new KonkretniPromatrac("2");
+				Promatrac p2 = new KonkretniPromatracAVG("3");
+				Promatrac p3 = new KonkretniPromatracAVG("4");
 
 				ws.getBtnDodajNaListu().addActionListener(new ActionListener() {
 
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
 
-						String name = ws.getTextField().getText();
-						activateAll(p1, ws, name);
-						activateAll(p2, ws, name);
-						activateAll(p3, ws, name);
-						activateAll(p4, ws, name);
+						activateAll(p, ws);
+						activateAll(p1, ws);
+						activateAll(p2, ws);
+						activateAll(p3, ws);
+
 					}
 				});
 
@@ -37,10 +36,10 @@ public class App {
 
 	}
 
-	public static void activateAll(Promatrac p, WeatherStation ws, String name) {
-
-		p.getTitle().equals(name);
-		p.subscribe(ws);
+	public static void activateAll(Promatrac p, WeatherStation ws) {
+		String name = ws.getTextFieldPromatrac().getText();
+		if (name.matches(p.getTitle()))
+			p.subscribe(ws);
 
 	}
 

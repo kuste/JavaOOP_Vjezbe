@@ -7,7 +7,7 @@ public class KonkretniPromatracAVG extends Promatrac {
 	private static ArrayList<Float> listTlak = new ArrayList<>();
 
 	public KonkretniPromatracAVG(String name) {
-		super(name + " AVG");
+		super(name);
 		super.lblTemperatura.setText(lblTemperatura.getText() + "/AVG");
 		super.lblVlaznost.setText(lblVlaznost.getText() + "/AVG");
 		super.lblTlak.setText(lblTlak.getText() + "/AVG");
@@ -20,7 +20,6 @@ public class KonkretniPromatracAVG extends Promatrac {
 		listTemp.add(temp);
 		listVla.add(vla);
 		listTlak.add(tlak);
-
 		textFieldTemp.setText(String.valueOf(calcAVG(listTemp)));
 		textFieldVlaznost.setText(String.valueOf(calcAVG(listVla)));
 		textFieldTlak.setText(String.valueOf(calcAVG(listTlak)));
@@ -52,7 +51,6 @@ public class KonkretniPromatracAVG extends Promatrac {
 
 	@Override
 	public String title() {
-
 		return super.getTitle();
 	}
 
