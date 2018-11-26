@@ -42,13 +42,13 @@ public class App {
 		System.out.println("/////////////////////////////////////////////////");
 		BasicShape t = new Trokut();
 		t.shapeName("");
-		
-		FillColorDecorator f = new FillColorDecorator(new LineStyleDecorator(new LineThicknessDecorator(new LineColorDecorator(t, Color.BLUE), 2.32), LineStyle.DASH_DOT),Color.RED);
-		f.descritption();
-		f.draw();
-		
+		t = new FillColorDecorator(new LineStyleDecorator(new LineThicknessDecorator(new LineColorDecorator(t, Color.BLUE), 2.32), LineStyle.DASH_DOT),Color.RED);
+		t.descritption();
+		t.draw();
+		System.out.println("/////////////////////////////////////////////////");
 		BasicShape t2 = new Trokut();
-		t2 = new FillColorDecorator(t2,Color.PURPLE);
+		t2.shapeName("");
+		t2 = new FillColorDecorator(t2,	Color.PURPLE);
 		t2 = new LineStyleDecorator(t2, LineStyle.DOT);
 		t2 = new LineColorDecorator(t2, Color.GREEN);
 		t2 = new FillColorDecorator(t2, Color.WHITE);

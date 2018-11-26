@@ -6,8 +6,8 @@ public class KonkretniPromatracAVG extends Promatrac {
 	private static ArrayList<Float> listVla = new ArrayList<>();
 	private static ArrayList<Float> listTlak = new ArrayList<>();
 
-	public KonkretniPromatracAVG(String name) {
-		super(name);
+	public KonkretniPromatracAVG(String name,String email) {
+		super(name, email);
 		super.lblTemperatura.setText(lblTemperatura.getText() + "/AVG");
 		super.lblVlaznost.setText(lblVlaznost.getText() + "/AVG");
 		super.lblTlak.setText(lblTlak.getText() + "/AVG");
@@ -40,7 +40,7 @@ public class KonkretniPromatracAVG extends Promatrac {
 
 	@Override
 	public String toString() {
-		return "Konkretni Promatrac " + getTitle();
+		return "\nKonkretni Promatrac--> " + getTitle()+"\nEmail-->  "+email+"\nPromatrac id-->  "+id;
 	}
 
 	@Override

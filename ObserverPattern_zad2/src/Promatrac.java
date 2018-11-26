@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,9 +16,19 @@ public abstract class Promatrac extends JFrame implements Observer {
 	protected JLabel lblTemperatura;
 	protected JLabel lblVlaznost;
 	protected JLabel lblTlak;
-
-	public Promatrac(String name) {
-
+	protected String name;
+	protected String email;
+	protected int id;
+	public Promatrac(String name,String email) {
+		this.name=name;
+		this.email=email;
+		
+		Random r = new Random();
+		int id = r.nextInt(1000)+100;
+		this.id=id;
+		
+		
+		
 		setTitle(name);
 		setSize(462, 380);
 		setVisible(true);

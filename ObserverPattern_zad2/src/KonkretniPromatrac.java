@@ -1,8 +1,8 @@
 
 public class KonkretniPromatrac extends Promatrac {
 
-	public KonkretniPromatrac(String name) {
-		super(name);
+	public KonkretniPromatrac(String name,String email) {
+		super(name, email);
 
 	}
 
@@ -15,7 +15,7 @@ public class KonkretniPromatrac extends Promatrac {
 
 	@Override
 	public String toString() {
-		return "Konkretni Promatrac " + getTitle();
+		return "\nKonkretni Promatrac--> " + getTitle()+"\nEmail--> "+email+"\nObserver id--> "+id;
 	}
 
 	@Override

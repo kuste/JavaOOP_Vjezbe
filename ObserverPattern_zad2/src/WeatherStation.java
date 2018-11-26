@@ -199,15 +199,17 @@ public class WeatherStation extends JFrame implements Observable {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					textAreaPodatciOProm.append(comboBoxPromatraci.getSelectedItem().toString() + "\n");
 					int ind = comboBoxPromatraci.getSelectedIndex();
+					textAreaPodatciOProm.append(observers.get(ind).toString() + "\n");
+					textAreaPodatciOProm.append("--------------------------------------------");
+
 					((Window) observers.get(ind)).setVisible(true);
 				} catch (Exception e1) {
 					textAreaPodatciOProm.append("Nema promatraca\n");
 				}
 			}
-
 		});
+
 		btnUkloni.addActionListener(new ActionListener() {
 
 			@Override
@@ -229,7 +231,7 @@ public class WeatherStation extends JFrame implements Observable {
 			textArea.append("Observer s tim imenom je vec dodan!\n");
 		} else {
 			observers.add(o);
-			comboBoxPromatraci.addItem(observers.get(observers.size() - 1).toString());
+			comboBoxPromatraci.addItem(observers.get(observers.size() - 1).title());
 			String name = textFieldPromatrac.getText();
 
 			if (observers.get(observers.size() - 1).title().equals(name)) {
@@ -264,10 +266,5 @@ public class WeatherStation extends JFrame implements Observable {
 	public JTextField getTextFieldPromatrac() {
 		return textFieldPromatrac;
 	}
-
-
-	
-
-
 
 }
