@@ -14,7 +14,7 @@ public class App {
 			public void run() {
 
 				WeatherStation ws = new WeatherStation();
-				Promatrac p = new KonkretniPromatrac("ime1", "prom1@email.com");
+				Promatrac p = new KonkretniPromatrac("ime", "prom1@email.com");
 				Promatrac p1 = new KonkretniPromatrac("ime2", "prom2@email.com");
 				Promatrac p2 = new KonkretniPromatracAVG("ime3", "prom1@email.com");
 				Promatrac p3 = new KonkretniPromatracAVG("ime4", "prom1@email.com");
