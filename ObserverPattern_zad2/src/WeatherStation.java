@@ -3,6 +3,7 @@ import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
@@ -27,7 +28,7 @@ public class WeatherStation extends JFrame implements Observable {
 	private JButton btnUkloni;
 	private JButton btnUnesiPromjene;
 	private JTextArea textAreaPodatciOProm;
-	private JTextArea textArea;
+	private JTextArea textAreaPrikaz;
 	private Observer p;
 	private float temp;
 	private float vla;
@@ -161,9 +162,9 @@ public class WeatherStation extends JFrame implements Observable {
 		scrollPane_1.setBounds(23, 38, 377, 155);
 		panelDD.add(scrollPane_1);
 
-		textArea = new JTextArea();
-		textArea.setEditable(false);
-		scrollPane_1.setViewportView(textArea);
+		textAreaPrikaz = new JTextArea();
+		textAreaPrikaz.setEditable(false);
+		scrollPane_1.setViewportView(textAreaPrikaz);
 
 	}
 
@@ -228,14 +229,14 @@ public class WeatherStation extends JFrame implements Observable {
 	@Override
 	public void add(Observer o) {
 		if (observers.contains(o)) {
-			textArea.append("Observer s tim imenom je vec dodan!\n");
+			textAreaPrikaz.append("Observer s tim imenom je vec dodan!\n");
 		} else {
 			observers.add(o);
 			comboBoxPromatraci.addItem(observers.get(observers.size() - 1).title());
 			String name = textFieldPromatrac.getText();
 
 			if (observers.get(observers.size() - 1).title().equals(name)) {
-				textArea.append("Observer " + name + " added\n");
+				textAreaPrikaz.append("Observer " + name + " added\n");
 			}
 		}
 	}
@@ -244,7 +245,7 @@ public class WeatherStation extends JFrame implements Observable {
 	public void remove(Observer o) {
 		int index = observers.indexOf(o);
 		observers.remove(index);
-		textArea.append("Observer removed!\n");
+		textAreaPrikaz.append("Observer removed!\n");
 		comboBoxPromatraci.removeItemAt((comboBoxPromatraci.getSelectedIndex()));
 
 	}
@@ -253,7 +254,8 @@ public class WeatherStation extends JFrame implements Observable {
 	public void notifyObs() {
 		for (Observer o : observers) {
 			o.update(temp, vla, tlak);
-			textArea.append("Podatci poslani!\n");
+			Date date = new Date();
+			textAreaPrikaz.append("Podatci poslani!\n" + date + "\n");
 
 		}
 

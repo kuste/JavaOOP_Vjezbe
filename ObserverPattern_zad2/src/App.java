@@ -16,18 +16,18 @@ public class App {
 				WeatherStation ws = new WeatherStation();
 				Promatrac p = new KonkretniPromatrac("ime1", "prom1@email.com");
 				Promatrac p1 = new KonkretniPromatrac("ime2", "prom2@email.com");
-				// Promatrac p2 = new KonkretniPromatracAVG("3");
-				// Promatrac p3 = new KonkretniPromatracAVG("4");
+				Promatrac p2 = new KonkretniPromatracAVG("ime3", "prom1@email.com");
+				Promatrac p3 = new KonkretniPromatracAVG("ime4", "prom1@email.com");
 
 				ws.getBtnDodajNaListu().addActionListener(new ActionListener() {
 
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
-							activateAll(p, ws);
-							activateAll(p1, ws);
-							// activateAll(p2, ws);
-							// activateAll(p3, ws);
-						
+						activateAll(p, ws);
+						activateAll(p1, ws);
+						activateAll(p2, ws);
+						activateAll(p3, ws);
+
 					}
 				});
 
@@ -41,8 +41,7 @@ public class App {
 		if (name.matches(p.getTitle())) {
 			p.subscribe(ws);
 		}
-		
-		
+
 	}
 
 }

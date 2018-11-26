@@ -15,7 +15,7 @@ public class KonkretniPromatrac extends Promatrac {
 
 	@Override
 	public String toString() {
-		return "\nKonkretni Promatrac--> " + getTitle()+"\nEmail--> "+email+"\nObserver id--> "+id;
+		return "Konkretni Promatrac--> " + getTitle()+"\nEmail--> "+email+"\nObserver id--> "+id+"\n";
 	}
 
 	@Override
