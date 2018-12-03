@@ -29,12 +29,23 @@ public class App {
 		System.out.println("pretisnite 1 za upaliti svitla 2 za ugasiti svitla");
 		System.out.println("pretisnite 3 za Garazna vrata gore 4 za Garazna vrata doli");
 		System.out.println("pretisnite 5 za upaliti stereo 6 za ugaziti stereo");
-
+		// invoker
 		RemoteControl remote = new RemoteControl();
-		Light light = new Light();
-		LightOnCommand lightCmd = new LightOnCommand(light);
-		remote.setCommand(0, lightCmd, lightCmd);
 
+		// reciever
+		Light light = new Light();
+		//cmd objects on
+		LightOnCommand lightCmd = new LightOnCommand(light);
+		//cmd objects off
+		
+		
+		//-------------
+		
+		//info for invoker
+		System.out.println(remote);
+		
+		//--------------------------------------
+		remote.setCommand(0, lightCmd, lightCmd);
 		GarageDoor door = new GarageDoor();
 		GarageDoorOpenCommand garageCmd = new GarageDoorOpenCommand(door);
 		remote.setCommand(1, garageCmd, garageCmd);
