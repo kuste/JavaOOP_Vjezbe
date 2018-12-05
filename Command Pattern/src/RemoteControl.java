@@ -35,7 +35,7 @@ public class RemoteControl {
 		commandOff[slot].execute();
 		undoCommand = commandOff[slot];
 	}
-	
+
 	public void buttonUndoPressed() {
 		undoCommand.undo();
 	}

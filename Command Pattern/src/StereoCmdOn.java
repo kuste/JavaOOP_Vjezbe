@@ -1,9 +1,9 @@
 
-public class StereoRemoteCmd implements ICommand{
+public class StereoCmdOn implements ICommand{
 
 	StereoDevice stereo;
 
-	public StereoRemoteCmd(StereoDevice stereo) {
+	public StereoCmdOn(StereoDevice stereo) {
 
 		this.stereo =stereo;
 	}

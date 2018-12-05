@@ -11,7 +11,7 @@ public class LightOnCommand implements ICommand {
 	
 	@Override
 	public void execute() {
-		
+
 		light.on();
 	}
 
