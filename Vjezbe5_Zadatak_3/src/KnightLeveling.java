@@ -22,16 +22,6 @@ public class KnightLeveling extends Knight {
 	}
 
 	@Override
-	public int movement(int mov) {
-		return knight.movement(mov);
-	}
-
-	@Override
-	public int strenght(int str) {
-		return knight.strenght(str);
-	}
-
-	@Override
 	public void goAway() {
 		knight.goAway();
 	}
@@ -40,6 +30,5 @@ public class KnightLeveling extends Knight {
 	public void status() {
 		System.out.println("You attacked with " + getWeapon() + " for " + damage + " dmg");
 	}
-
 
 }

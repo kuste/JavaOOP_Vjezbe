@@ -2,24 +2,15 @@ import java.util.Random;
 
 public class SimpleKnight extends Knight {
 
-	
 	private String weapon = "Fists";
+	private int strenght = 5;
+
 	@Override
 	public int attack() {
 		Random rnd = new Random();
 		int attack = rnd.nextInt((20 - 10) + 1) + 10;
-		damage = attack;
+		damage = (attack / 2) * (strenght / 2);
 		return damage;
-	}
-
-	@Override
-	public int movement(int mov) {
-		return mov;
-	}
-
-	@Override
-	public int strenght(int str) {
-		return str;
 	}
 
 	@Override
@@ -41,9 +32,5 @@ public class SimpleKnight extends Knight {
 	public void status() {
 		System.out.println("You attacked with " + getWeapon() + " for " + damage + " dmg");
 	}
-
-
-
-
 
 }

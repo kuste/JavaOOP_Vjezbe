@@ -6,6 +6,7 @@ public class Level3 extends KnightLeveling {
 
 	public Level3(Knight knight) {
 		super(knight);
+		strenght = 20;
 	
 	}
 
@@ -13,7 +14,7 @@ public class Level3 extends KnightLeveling {
 	public int attack() {
 		Random rnd = new Random();
 		int attack = rnd.nextInt((100 - 80) + 1) + 80;
-		damage = attack;
+		damage = (attack / 2) * (strenght / 2);
 		return damage;
 	}
 
@@ -24,16 +25,6 @@ public class Level3 extends KnightLeveling {
 		} else if (weapon == 2) {
 			this.Weapon = "Sword";
 		}
-	}
-
-	@Override
-	public int movement(int mov) {
-		return mov;
-	}
-
-	@Override
-	public int strenght(int str) {
-		return str;
 	}
 
 	@Override

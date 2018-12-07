@@ -1,18 +1,19 @@
 import java.util.Random;
 
-public class Level5 extends KnightLeveling{
+public class Level5 extends KnightLeveling {
 
 	private String Weapon = "Holy Handgranade";
-	
+
 	public Level5(Knight knight) {
 		super(knight);
-		// TODO Auto-generated constructor stub
+		strenght = 25;
 	}
+
 	@Override
 	public int attack() {
 		Random rnd = new Random();
 		int attack = rnd.nextInt((400 - 200) + 1) + 200;
-		damage = attack;
+		damage = (attack / 2) * (strenght / 2);
 		return damage;
 	}
 
@@ -25,15 +26,7 @@ public class Level5 extends KnightLeveling{
 		}
 	}
 
-	@Override
-	public int movement(int mov) {
-		return mov;
-	}
-
-	@Override
-	public int strenght(int str) {
-		return str;
-	}
+	
 
 	@Override
 	public void goAway() {

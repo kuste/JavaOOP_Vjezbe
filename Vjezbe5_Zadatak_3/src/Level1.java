@@ -6,6 +6,7 @@ public class Level1 extends KnightLeveling {
 
 	public Level1(Knight knight) {
 		super(knight);
+		strenght = 10;
 
 	}
 
@@ -13,7 +14,7 @@ public class Level1 extends KnightLeveling {
 	public int attack() {
 		Random rnd = new Random();
 		int attack = rnd.nextInt((40 - 20) + 1) + 20;
-		damage = attack;
+		damage = (attack / 2) * (strenght / 2);
 		return damage;
 	}
 
@@ -26,15 +27,7 @@ public class Level1 extends KnightLeveling {
 		}
 	}
 
-	@Override
-	public int movement(int mov) {
-		return mov;
-	}
 
-	@Override
-	public int strenght(int str) {
-		return str;
-	}
 
 	@Override
 	public void goAway() {
