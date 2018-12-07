@@ -1,16 +1,35 @@
 
-public interface Knight {
+public abstract class Knight {
 
-	void attack();
+	protected Enemy enemy;
 
-	void changeWeapon(int weapon);
-	
-	String getWeapon();
+	protected String weapon;
 
-	int movement(int mov);
+	protected static int xp = 0;
 
-	int strenght(int str);
+	protected int damage;
 
-	void goAwa();
+	abstract int attack();
+
+	abstract void changeWeapon(int weapon);
+
+	abstract String getWeapon();
+
+	abstract int movement(int mov);
+
+	abstract int strenght(int str);
+
+	abstract void goAway();
+
+	abstract void status();
+
+	protected void addXp(int xp) {
+		this.xp = this.xp + xp;
+	}
+
+	protected int getXp() {
+		System.out.println("You have " + xp + " xp");
+		return this.xp;
+	}
 
 }
