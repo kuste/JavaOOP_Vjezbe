@@ -4,7 +4,6 @@ public class KnightLeveling extends Knight {
 
 	public KnightLeveling(Knight knight) {
 		this.knight = knight;
-
 	}
 
 	@Override

@@ -7,7 +7,8 @@ public class Game {
 	private Knight knight = new SimpleKnight();;
 	private Enemy enemy = new SimpleEnemy();
 	private Scanner sc = new Scanner(System.in);
-
+	private static int xpstate = 0;
+	private int xp;
 
 	public void playGame() {
 		System.out.println("Welcome to awesome RPG game!");
@@ -28,7 +29,9 @@ public class Game {
 			} else if (input.matches("r")) {
 				knight.goAway();
 				enemy.health = 0;
-				enemySpawn();
+				enemy = new SimpleEnemy();
+				System.out.println("New enemy SimpleEnemy spawned");
+				System.out.println("Enemy hp is " + enemy.getHp());
 			} else if (input.matches("c")) {
 				System.out.println("Press 1 trough 6 to select a weapon ");
 				int cnt = 1;
@@ -36,12 +39,10 @@ public class Game {
 					System.out.println(cnt + " --> " + s);
 					cnt++;
 				}
-
 				try {
 					int input2 = sc.nextInt();
 					knight.changeWeapon(input2);
 				} catch (Exception e) {
-
 				}
 			} else {
 				System.out.println("Invalid input, press h for help, c for weapon select");
@@ -105,44 +106,65 @@ public class Game {
 	}
 
 	private void checkLevel() {
-		int xp = knight.getXp();
-		switch (xp) {
-		case 100:
+		xp = knight.getXp();
+
+		if ((xp > 100 && xp < 200) && (xpstate != 100) && knight.getClass().isInstance(new SimpleKnight())) {
+			xpstate = 100;
 			knight = new Level1(knight);
+		} else if ((xp > 200 && xp < 400) && (xpstate != 200) && knight.getClass().isInstance(new Level1(knight))) {
+			xpstate = 200;
+			knight = new Level2(knight);
+
+		} else if ((xp > 400 && xp < 800) && (xpstate != 3) && knight.getClass().isInstance(new Level2(knight))) {
+			xpstate = 3;
+			knight = new Level3(knight);
+
+		} else if ((xp > 800 && xp < 1600) && (xpstate != 4) && knight.getClass().isInstance(new Level3(knight))) {
+			xpstate = 4;
+			knight = new Level4(knight);
+
+		} else if ((xp > 1600 && xp < 3500) && (xpstate != 5) && knight.getClass().isInstance(new Level4(knight))) {
+			xpstate = 5;
+			knight = new Level5(knight);
+
+		} else {
+			xpstate = 0;
+		}
+
+		switch (xpstate) {
+		case 100:
 			System.out.println("*********************************************");
 			System.out.println("Level Up! you are now Level 1");
 			System.out.println("You got a new weapon, strenght is iscreased, damage is increased!");
 			System.out.println("*********************************************");
 			break;
 		case 200:
-			knight = new Level2(knight);
 			System.out.println("*********************************************");
 			System.out.println("Level Up! you are now Level 2");
 			System.out.println("You got a new weapon, strenght is iscreased, damage is increased!");
 			System.out.println("*********************************************");
 			break;
-		case 300:
-			knight = new Level3(knight);
+		case 3:
 			System.out.println("*********************************************");
 			System.out.println("Level Up! you are now Level 3");
 			System.out.println("You got a new weapon, strenght is iscreased, damage is increased!");
 			System.out.println("*********************************************");
 			break;
-		case 400:
-			knight = new Level4(knight);
+		case 4:
 			System.out.println("*********************************************");
 			System.out.println("Level Up! you are now Level 4");
 			System.out.println("You got a new weapon, strenght is iscreased, damage is increased!");
 			System.out.println("*********************************************");
 			break;
-		case 500:
-			knight = new Level5(knight);
+		case 5:
 			System.out.println("*********************************************");
 			System.out.println("Level Up! you are now Level 5");
 			System.out.println("You got a new weapon, strenght is iscreased, damage is increased!");
 			System.out.println("*********************************************");
 			break;
+
 		}
 
 	}
+
 }
