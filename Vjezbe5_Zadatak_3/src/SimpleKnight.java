@@ -5,6 +5,10 @@ public class SimpleKnight extends Knight {
 	private String weapon = "Fists";
 	private int strenght = 5;
 
+	public SimpleKnight() {
+		arsenal[0] = this.weapon;
+	}
+
 	@Override
 	public int attack() {
 		Random rnd = new Random();
@@ -16,11 +20,6 @@ public class SimpleKnight extends Knight {
 	@Override
 	public void goAway() {
 		System.out.println("You ran from enemy");
-	}
-
-	@Override
-	public void changeWeapon(int weapon) {
-		System.out.println("You dont have any other weapons");
 	}
 
 	@Override

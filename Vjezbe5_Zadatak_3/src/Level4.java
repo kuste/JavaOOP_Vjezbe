@@ -1,28 +1,22 @@
 import java.util.Random;
 
-public class Level4 extends KnightLeveling{
+public class Level4 extends KnightLeveling {
 
-	private String Weapon = "Two-handed Hammer";
-	
+	private String weapon = "Two-handed Hammer";
+
 	public Level4(Knight knight) {
 		super(knight);
 		strenght = 21;
+		arsenal[4] = this.weapon;
+
 	}
+
 	@Override
 	public int attack() {
 		Random rnd = new Random();
 		int attack = rnd.nextInt((120 - 100) + 1) + 100;
 		damage = (attack / 2) * (strenght / 2);
 		return damage;
-	}
-
-	@Override
-	public void changeWeapon(int weapon) {
-		if (weapon == 1) {
-			this.Weapon = knight.getWeapon();
-		} else if (weapon == 2) {
-			this.Weapon = "Sword";
-		}
 	}
 
 
@@ -35,7 +29,7 @@ public class Level4 extends KnightLeveling{
 
 	@Override
 	public String getWeapon() {
-		return Weapon;
+		return weapon;
 	}
 
 	@Override

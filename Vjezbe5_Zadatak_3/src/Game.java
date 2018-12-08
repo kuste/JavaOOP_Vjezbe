@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -7,13 +8,13 @@ public class Game {
 	private Enemy enemy = new SimpleEnemy();
 	private Scanner sc = new Scanner(System.in);
 
-	public Game() {
-
-	}
 
 	public void playGame() {
 		System.out.println("Welcome to awesome RPG game!");
-		System.out.println("Press a for attack, h for help, r to run away from enemy, 0 for exit");
+		System.out.println("Press a for attack, h for help, r to run away from enemy, c for weapon select, 0 for exit");
+		enemy = new SimpleEnemy();
+		System.out.println("New enemy SimpleEnemy spawned");
+		System.out.println("Enemy hp is " + enemy.getHp());
 		while (true) {
 			String input = sc.next();
 			if (input.matches("a")) {
@@ -22,25 +23,38 @@ public class Game {
 				System.out.println("You left the game, thank you for playing.");
 				System.exit(0);
 			} else if (input.matches("h")) {
-				System.out.println("Press a for attack, 0 for exit");
+				System.out.println(
+						"Press a for attack, h for help, r to run away from enemy, c for weapon select, 0 for exit");
 			} else if (input.matches("r")) {
 				knight.goAway();
 				enemy.health = 0;
 				enemySpawn();
+			} else if (input.matches("c")) {
+				System.out.println("Press 1 trough 6 to select a weapon ");
+				int cnt = 1;
+				for (String s : knight.arsenal) {
+					System.out.println(cnt + " --> " + s);
+					cnt++;
+				}
+
+				try {
+					int input2 = sc.nextInt();
+					knight.changeWeapon(input2);
+				} catch (Exception e) {
+
+				}
 			} else {
-				System.out.println("Invalid input, press h for help");
+				System.out.println("Invalid input, press h for help, c for weapon select");
 			}
 		}
 	}
 
 	private void executeAttack() {
 
-		System.out.println("---------------------------------------------");
 		if (enemy.getHp() > 0) {
 			checkLevel();
 			enemy.recieveDmg(knight.attack());
 			knight.status();
-			knight.addXp(enemy.getXpValue());
 			enemy.checkHealth();
 			System.out.println("---------------------------------------------");
 		}
@@ -50,11 +64,17 @@ public class Game {
 
 	private void enemySpawn() {
 		if (enemy.getHp() <= 0) {
-			enemy = new SimpleEnemy();
+			System.out.println("You earned " + enemy.getXpValue() + " xp for killing the enemy");
+			knight.addXp(enemy.getXpValue());
 			Random num = new Random();
-			int enemySpawn = num.nextInt((5 - 1) + 1) + 1;
+			int enemySpawn = num.nextInt((5 - 0) + 0) + 0;
 
 			switch (enemySpawn) {
+			case 0:
+				enemy = new SimpleEnemy();
+				System.out.println("New enemy SimpleEnemy spawned");
+				System.out.println("Enemy hp is " + enemy.getHp());
+				break;
 			case 1:
 				enemy = new EnemyLvl1(enemy);
 				System.out.println("New enemy Level 1 spawned");

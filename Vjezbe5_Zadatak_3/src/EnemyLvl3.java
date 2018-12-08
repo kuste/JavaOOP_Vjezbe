@@ -4,6 +4,6 @@ public class EnemyLvl3 extends Enemy {
 	public EnemyLvl3(Enemy enemy) {
 		this.enemy = enemy;
 		this.health = 1000;
-		this.xpValue = 20;
+		this.xpValue = 60;
 	}
 }
