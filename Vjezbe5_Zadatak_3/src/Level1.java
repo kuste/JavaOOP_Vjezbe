@@ -1,25 +1,22 @@
 import java.util.Random;
 
-public class SimpleKnight extends Knight {
+public class Level1 extends KnightLeveling {
 
-	private String weapon = "Fists";
-	private int strenght = 5;
+	private String weapon = "Sword";
 
-	public SimpleKnight() {
-		arsenal[0] = this.weapon;
+	public Level1(Knight knight) {
+		super(knight);
+		strenght = 10;
+		arsenal[1] = this.weapon;
+
 	}
 
 	@Override
 	public int attack() {
 		Random rnd = new Random();
-		int attack = rnd.nextInt((20 - 10) + 1) + 10;
+		int attack = rnd.nextInt((40 - 20) + 1) + 20;
 		damage = (attack / 2) * (strenght / 2);
 		return damage;
-	}
-
-	@Override
-	public void goAway() {
-		System.out.println("You ran from enemy");
 	}
 
 	@Override
@@ -62,20 +59,21 @@ public class SimpleKnight extends Knight {
 			} else {
 				System.out.println("You don't have any other weapons");
 			}
-		}else {
+		} else {
 			System.out.println("Invalid input, press h for help or c for Weapon selection");
 		}
 
 	}
 
 	@Override
-	public String getWeapon() {
-		return weapon;
+	public void goAway() {
+		System.out.println("You ran from enemy");
+
 	}
 
 	@Override
-	public void status() {
-		System.out.println("You attacked with " + getWeapon() + " for " + damage + " dmg");
+	public String getWeapon() {
+		return weapon;
 	}
 
 }
