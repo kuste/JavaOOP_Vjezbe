@@ -17,7 +17,7 @@ public class App {
 		entOne.start();
 		entTwo.start();
 		
-		
+		//kom
 		
 		
 		
