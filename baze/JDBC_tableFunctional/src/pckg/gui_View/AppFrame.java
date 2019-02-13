@@ -24,6 +24,7 @@ public class AppFrame extends JFrame {
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
+		setResizable(false);;
 		initALL();
 		layoutALL();
 		activateApp();

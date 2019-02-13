@@ -21,8 +21,9 @@ public class Client implements Serializable {
 		this.eduCat = eduCategory(education);
 		this.regCat = regCategory(region);
 		this.emplCat = emplCategory(employment);
-//		JOptionPane.showMessageDialog(null, Integer.toString(sz), "DBS size", JOptionPane.INFORMATION_MESSAGE);
-		if(sz == 0) {
+		// JOptionPane.showMessageDialog(null, Integer.toString(sz), "DBS size",
+		// JOptionPane.INFORMATION_MESSAGE);
+		if (sz == 0) {
 			cnt = 1;
 			this.id = cnt;
 			cnt++;
@@ -37,6 +38,27 @@ public class Client implements Serializable {
 
 	}
 
+	public Client(int id2, String name2, String mail2, String education, String region, String employed) {
+
+		this.id = id2;
+		this.name = name2;
+		this.mail = mail2;
+		this.eduCat = EducationCategory.valueOf(education);
+		this.regCat = RegionCategory.valueOf(region);
+		this.emplCat = EmploymentCategory.valueOf(employed);
+		cnt++;
+
+	}
+	
+	
+
+	@Override
+	public String toString() {
+		return "Client [name=" + name + ", mail=" + mail + ", eduCat=" + eduCat + ", regCat=" + regCat + ", emplCat="
+				+ emplCat + ", id=" + id + "]";
+	}
+
+	
 	private EmploymentCategory emplCategory(String employment) {
 		switch (employment) {
 
