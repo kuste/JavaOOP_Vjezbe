@@ -18,17 +18,23 @@ import pckg.controller.Controller;
 
 public class AppMenuBar extends JMenuBar {
 
-	private static JMenu fileMenu = new JMenu("File");
-	private static JMenuItem saveItem = new JMenuItem("Save as...");
-	private static JMenuItem openItem = new JMenuItem("Open...");
-	private static JMenuItem exitItem = new JMenuItem("Exit");
+	private static JMenu fileMenu;
+	private static JMenuItem saveItem;
+	private static JMenuItem openItem;
+	private static JMenuItem exitItem;
 	private static JFileChooser fileChooser;
+	private static JMenuItem save2Dbs;
+	private static JMenuItem load2Dbs;
+	private static JMenuItem disconnectFromDbs;
 
 	public AppMenuBar() {
 		initMenuBar();
 	}
 
 	private void initMenuBar() {
+		save2Dbs = new JMenuItem("Save to dbs");
+		load2Dbs = new JMenuItem("Load from dbs");
+		disconnectFromDbs = new JMenuItem("Disconnect from dbs");
 
 		fileMenu = new JMenu("File");
 		saveItem = new JMenuItem("Save as...");
@@ -37,6 +43,10 @@ public class AppMenuBar extends JMenuBar {
 
 		fileMenu.add(saveItem);
 		fileMenu.add(openItem);
+		fileMenu.addSeparator();
+		fileMenu.add(save2Dbs);
+		fileMenu.add(load2Dbs);
+		fileMenu.add(disconnectFromDbs);
 		fileMenu.addSeparator();
 		fileMenu.add(exitItem);
 
@@ -47,11 +57,12 @@ public class AppMenuBar extends JMenuBar {
 
 		// Setting mnemonics to FileMenu
 		fileMenu.setMnemonic(KeyEvent.VK_F);
-		// Setting accelerators 
+		// Setting accelerators
 		exitItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
 		openItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, ActionEvent.CTRL_MASK));
-		
-
+		save2Dbs.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
+		load2Dbs.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
+		disconnectFromDbs.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_G, ActionEvent.CTRL_MASK));
 		// Activate saveItem
 		saveItem.addActionListener(new ActionListener() {
 
@@ -79,6 +90,42 @@ public class AppMenuBar extends JMenuBar {
 
 				}
 
+			}
+		});
+		save2Dbs.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					controller.connect2MySQL();
+				} catch (Exception e) {
+					System.out.println("Cant connent");
+				}
+
+				controller.save2DBS();
+				System.out.println("Saved to dbs");
+			}
+		});
+
+		load2Dbs.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				controller.connect2MySQL();
+				controller.loadFromDbS();
+				controller.refreshTable(tablePanel);
+				controller.refreshViewPanel(viewPanel);
+
+			}
+		});
+
+		disconnectFromDbs.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				controller.disconnnectFromDBS();
 			}
 		});
 
